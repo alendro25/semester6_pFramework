@@ -1,8 +1,8 @@
 # Kelompok 6 - Sistem Informasi Supermarket
-- 2018420141 Akhamd Fatih
-- 2018420106 Yudha Shandy Kusuma
-- 2018420126 Gerald Alessandro Timothy
-- 2018420001 Khoirul Benni H
+   - 2018420141 Akhamd Fatih
+   - 2018420106 Yudha Shandy Kusuma
+   - 2018420126 Gerald Alessandro Timothy
+   - 2018420001 Khoirul Benni H
 
 ## Di buat menggunakan Codeigniter 4 sebagai Framework PHP dan SB-Admin(Bootstrap 4) sebagai template dashboard
 
