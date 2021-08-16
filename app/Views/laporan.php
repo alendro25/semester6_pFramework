@@ -51,7 +51,7 @@
                 <tr>
                     <td> No</td>
                     <td> ID Barang</td>
-                    <td> Nama Barang</td>
+                    <td> Kode Barang</td>
                     <td style="width:10%;"> Jumlah</td>
                     <td style="width:20%;"> Total</td>
                     <td> Kasir</td>
@@ -60,17 +60,28 @@
             </thead>
             <tbody>
 
-                <tr>
-                    <td><?php echo $no; ?></td>
-                    <td><?php echo $isi['id_barang']; ?></td>
-                    <td><?php echo $isi['nama_barang']; ?></td>
-                    <td><?php echo $isi['jumlah']; ?> </td>
-                    <td>Rp.<?php echo number_format($isi['total']); ?>,-</td>
-                    <td><?php echo $isi['nm_member']; ?></td>
-                    <td><?php echo $isi['tanggal_input']; ?></td>
-                </tr>
+                <?php $i = 1; ?>
+                <?php foreach ($nota as $n) : ?>
+                    <tr>
+                        <td><?= $i++; ?></td>
+                        <td><?= $n['id_nota']; ?></td>
+                        <td><?= $n['id_barang']; ?></td>
+                        <td><?= $n['jumlah']; ?> </td>
+                        <td>Rp.<?= $n['total']; ?>,-</td>
+                        <td>Gerald Alessandro Timothy</td>
+                        <td><?= $n['tanggal_input']; ?></td>
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
+
+        <?php $db      = \Config\Database::connect(); ?>
+        <?php $builder3 = $db->table('nota'); ?>
+        <?php $hitungPenjualan = $builder3->selectSum('total'); ?>
+        <?php $hitungPenjualan = $builder3->get(); ?>
+        <?php $totalJual = $hitungPenjualan->getResult(); ?>
+
+        <h3>Pemasukan : Rp <?= $totalJual[0]->total; ?>,- </h3>
         <div class="clearfix" style="padding-top:27%;"></div>
     </div>
 </div>

@@ -38,7 +38,7 @@
                     <table class="table table-bordered">
                         <tr>
                             <td><b>Tanggal</b></td>
-                            <td><input type="text" readonly="readonly" class="form-control" value="<?php echo date("j F Y, G:i"); ?>" name="tgl"></td>
+                            <td><input type="text" readonly="readonly" class="form-control" value="<?= date("j F Y, H:i a"); ?>" name="tgl"></td>
                         </tr>
                     </table>
 

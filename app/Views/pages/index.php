@@ -13,10 +13,19 @@
     <?php $hitungModal = $builder->selectSum('harga_beli'); ?>
     <?php $hitungModal = $builder->get(); ?>
     <?php $modal = $hitungModal->getResult(); ?>
+
     <?php $builder2 = $db->table('kategori'); ?>
     <?php $query2 = $builder2->countAll(); ?>
     <?php $y = $db->query('SELECT SUM(harga_beli*stok) FROM barang'); ?>
     <?php $y = $y->getResult(); ?>
+
+    <?php $builder3 = $db->table('nota'); ?>
+    <?php $hitungPenjualan = $builder3->selectSum('jumlah'); ?>
+    <?php $hitungPenjualan = $builder3->get(); ?>
+    <?php $totalJual = $hitungPenjualan->getResult(); ?>
+    <?php $hitungTotal = $builder3->selectSum('total'); ?>
+    <?php $hitungTotal = $builder3->get(); ?>
+    <?php $totalUang = $hitungTotal->getResult(); ?>
 
 
 
@@ -87,11 +96,13 @@
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">7</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                        <?= $totalJual[0]->jumlah; ?>
+                                    </div>
                                 </div>
                                 <div class="col">
                                     <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: <?= $totalJual[0]->jumlah; ?>%" aria-valuenow="<?= $totalJual[0]->jumlah; ?>" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>
@@ -142,7 +153,7 @@
                     Pemasukan Uang
                 </div>
                 <div class="card-body">
-                    Rp. 29.000,-
+                    Rp. <?= $totalUang[0]->total; ?>,-
                 </div>
             </div>
         </div>

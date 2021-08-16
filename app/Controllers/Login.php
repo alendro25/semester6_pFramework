@@ -13,10 +13,6 @@ class Login extends BaseController
             'title' => 'Login | Sistem Informasi Supermarket'
         ];
 
-        // echo view('layout/header', $data);
-        // echo view('home');
-        // echo view('layout/footer');
-        // return view('home', $data);
         return view('login', $data);
     }
 
@@ -26,14 +22,11 @@ class Login extends BaseController
         $model = new UserModel();
         $user = $this->request->getVar('user');
         $password = $this->request->getVar('pass');
-        // dd($_POST);
         $data = $model->where('user', $user)->first();
-        // $data = $model->where(['user' => $user])->first();
-        // dd($data);
+
 
         if ($data) {
             $pass = $data['pass'];
-            // $verify_pass = password_verify($password, $pass);
             $verify_pass = $password;
 
             if ($verify_pass === $pass) {
